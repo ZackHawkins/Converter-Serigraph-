@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>GHSP Schedule Converter</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Tailwind via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="min-h-screen bg-slate-50 text-slate-800">
+  <header class="bg-white shadow">
+    <div class="mx-auto max-w-4xl px-6 py-4 flex items-center justify-between">
+      <h1 class="text-xl font-semibold tracking-tight">Data Converter</h1>
+      <a href="{% url 'converter:upload' %}" class="text-sm text-blue-600 hover:underline">Upload</a>
+    </div>
+  </header>
+  <main class="mx-auto max-w-4xl px-6 py-8">
+    {% block content %}{% endblock %}
+  </main>
+</body>
+</html>

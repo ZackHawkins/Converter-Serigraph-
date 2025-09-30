@@ -1,0 +1,17 @@
+{% extends "converter/base.html" %}
+{% block content %}
+<div class="bg-white shadow rounded-2xl p-6">
+  <h2 class="text-lg font-medium mb-2">Conversion complete</h2>
+  <p class="text-sm text-slate-600 mb-4">
+    <span class="font-medium">{{ upload.original_name }}</span> → CSV with
+    <span class="font-medium">{{ export.rows }}</span> rows.
+  </p>
+  <div class="flex items-center gap-3">
+    <a href="{{ export.csv_file.url }}" download
+       class="inline-flex items-center rounded-xl bg-emerald-600 text-white px-4 py-2 hover:bg-emerald-700">
+      Download CSV
+    </a>
+    <a href="{% url 'converter:upload' %}" class="text-sm text-blue-600 hover:underline">Convert another file</a>
+  </div>
+</div>
+{% endblock %}

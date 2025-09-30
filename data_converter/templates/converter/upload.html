@@ -1,0 +1,28 @@
+{% extends "converter/base.html" %}
+{% block content %}
+<div class="bg-white shadow rounded-2xl p-6">
+  <h2 class="text-lg font-medium mb-4">Upload GHSP TXT</h2>
+  <p class="text-sm text-slate-600 mb-6">
+    Drop your <code>.TXT</code> file (pipe-delimited) and we’ll generate a matching CSV.
+  </p>
+  <form method="post" enctype="multipart/form-data" class="space-y-4">
+    {% csrf_token %}
+    <div>
+      <label class="block text-sm font-medium mb-1">TXT file</label>
+      <input type="file" name="file" accept=".txt"
+             class="block w-full rounded border border-slate-300 px-3 py-2" required>
+      {% if form.file.errors %}
+        <p class="text-sm text-red-600 mt-1">{{ form.file.errors.0 }}</p>
+      {% endif %}
+    </div>
+    <div class="pt-2">
+      <button class="inline-flex items-center rounded-xl bg-blue-600 text-white px-4 py-2 hover:bg-blue-700">
+        Convert to CSV
+      </button>
+    </div>
+  </form>
+  <div class="mt-6 text-xs text-slate-500">
+    Your uploaded files are processed immediately; the generated CSV is stored under <code>media/exports/</code>.
+  </div>
+</div>
+{% endblock %}
